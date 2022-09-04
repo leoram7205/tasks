@@ -1,20 +1,42 @@
 import React, { useState } from "react"
+import AlertError from "./AlertError"
 
-export const Form = () => {
+export const Form = ({tareas, setTareas}) => {
   const [titulo, setTitulo] = useState('')
   const [fecha, setFecha] = useState('')
   const [descripcion, setDescripcion] = useState('')
 
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e)=> {
     e.preventDefault();
 
-    alert('Enviando Tarea ...😎 ')
+    if([titulo, fecha, descripcion].includes('')){
+      setError(true);
+      return;
+    }
+
+    setError(false);
+
+    const objTareas = {
+      titulo,
+      fecha,
+      descripcion
+    }
+ 
+    setTareas([...tareas, objTareas]);
+    setTitulo('');
+    setFecha('');
+    setDescripcion('');
   }
 
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5">
       <h2 className="font-black text-3xl text-center mb-10">Creación de Tareas</h2>
       <form onSubmit={ handleSubmit } className="bg-white shadow-md rounded-lg py-10 px-5" action="">
+        {error && <AlertError 
+                    valor={"Faltan campos por diligenciar"}
+                  />}
         <div className="mb-5">
           <label className="block text-gray-700 uppercase font-bold" htmlFor="title">Titulo</label>
           <input value={titulo} onChange={(e) => setTitulo(e.target.value)} id="title" className="border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400" type="text" placeholder="Titulo de la tarea" />
