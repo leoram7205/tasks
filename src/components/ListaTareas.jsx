@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { Tareas } from './Tareas';
 
 export const ListaTareas = ({tareas, setTarea, eliminarTarea }) => {
