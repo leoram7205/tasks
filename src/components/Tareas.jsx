@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Tareas = ({tarea, setTarea, eliminarTarea}) => {
 
-  const {titulo, fecha, descripcion, id} = tarea
+  const {id, titulo, fecha, descripcion} = tarea
 
   const handleEliminar = () =>{
     const respuesta = confirm('¿Desa eliminar está tarea? 🤔')
