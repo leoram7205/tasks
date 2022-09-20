@@ -1,4 +1,6 @@
 import React from 'react'
+import editar from "../assets/editar.svg"
+import borrar from "../assets/trash-4-512.svg"
 
 export const Tareas = ({tarea, setTarea, eliminarTarea}) => {
 
@@ -21,10 +23,10 @@ export const Tareas = ({tarea, setTarea, eliminarTarea}) => {
         <div className='flex flex-row justify-around mt-5'>
           
           <button onClick={()=> setTarea(tarea) }>
-          <img src="./src/assets/editar.svg"/>
+          <img src={editar}/>
           </button>
           <button onClick={handleEliminar }>
-            <img src="./src/assets/trash-4-512.svg"/>
+            <img src={borrar}/>
           </button>
         </div>
     </div>
